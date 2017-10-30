@@ -1,2 +1,2 @@
 #!/bin/bash
-./emulator ../tst/NES\ Test\ \(USA\).nes
+./tengu ../tst/NES\ Test\ \(USA\).nes

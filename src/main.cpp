@@ -1,7 +1,4 @@
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <unistd.h>
+#include "headers.h"
 
 int main(int argc, char **argv)
 {
