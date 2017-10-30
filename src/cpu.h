@@ -8,12 +8,13 @@ class CPU
 	private:
 	// registers
 	unsigned short int PC;
-	unsigned int stack_pointer;
+	unsigned char stack_pointer;
 	unsigned char accumulator;
 	unsigned char index_registerX;
 	unsigned char index_registerY;
 	
 	// status flags
+	public:
 	enum flags
 	{
 		CARRY,
@@ -26,4 +27,5 @@ class CPU
 	};
 
 	bool status_register[7];
+	unsigned char stack_memory[256];
 };

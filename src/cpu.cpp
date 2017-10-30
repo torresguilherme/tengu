@@ -3,7 +3,7 @@
 CPU::CPU()
 {
 	PC = 0;
-	stack_pointer = 0;
+	stack_pointer = 255;
 	accumulator = 0;
 	index_registerX = 0;
 	index_registerY = 0;
