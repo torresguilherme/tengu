@@ -21,12 +21,12 @@ class CPU
 		ZERO,
 		INTERRUPT_DISABLE,
 		DECIMAL_MODE,
-		BREAK_COMMAND,
+		BREAK,
 		OVERFLOW,
 		NEGATIVE
 	};
 
-	bool status_register[7];
+	bool status[7];
 	unsigned char stack_memory[256];
 	vector<void(*)()> _ops;
 
@@ -35,8 +35,11 @@ class CPU
 	void ORA_indirect_X();
 	void ORA_zero_page();
 	void ASL_zero_page();
-	void ORA_absolute();
+	void PHP();
+	void ORA_immediate();
 	void ASL_accumulator();
+	void ORA_absolute();
+	void ASL_absolute();
 	void BPL();
 	void ORA_indirect_Y();
 	void ORA_zero_page_X();
@@ -77,9 +80,12 @@ class CPU
 	void EOR_absolute();
 	void LSR_absolute();
 	void BVC();
-	void EOR_indirect_y();
+	void EOR_indirect_Y();
 	void EOR_zero_page_Y();
 	void EOR_zero_page_X();
+	void CLI();
+	void EOR_absolute_Y();
+	void EOR_absolute_X();
 	void LSR_absolute_X();
 
 	void RTS();
