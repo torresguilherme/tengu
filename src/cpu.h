@@ -8,10 +8,10 @@ class CPU
 	private:
 	// registers
 	unsigned short int PC;
-	unsigned char stack_pointer;
-	unsigned char accumulator;
-	unsigned char index_registerX;
-	unsigned char index_registerY;
+	unsigned char SP;
+	unsigned char ACC;
+	unsigned char irX;
+	unsigned char irY;
 	
 	// status flags
 	public:
@@ -19,16 +19,22 @@ class CPU
 	{
 		CARRY,
 		ZERO,
-		INTERRUPT_DISABLE,
-		DECIMAL_MODE,
+		INTERRUPT,
+		DECIMAL,
 		BREAK,
 		OVERFLOW,
 		NEGATIVE
 	};
 
 	bool status[7];
-	unsigned char stack_memory[256];
+	unsigned char stack[256];
 	vector<void(*)()> _ops;
+
+	// stack
+	void push(unsigned char);
+	unsigned char pull();
+
+	unsigned short int relative_addr();
 
 	// CPU operations
 	void BRK();

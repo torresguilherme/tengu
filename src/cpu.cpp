@@ -3,20 +3,45 @@
 CPU::CPU()
 {
 	PC = 0;
-	stack_pointer = 255;
-	accumulator = 0;
-	index_registerX = 0;
-	index_registerY = 0;
+	SP = 255;
+	ACC = 0;
+	irX = 0;
+	irY = 0;
 	for(int i = 0; i < 7; i++)
 	{
 		status[i] = false;
 	}
 }
 
+void CPU::push(unsigned char value)
+{
+	stack[SP] = value;
+	SP--;
+}
+
+unsigned char CPU::pull()
+{
+	SP++;
+	unsigned char temp = stack[SP];
+	stack[SP] = 0;
+	return temp;
+}
+
+unsigned short int CPU::relative_addr()
+{
+	return PC; // + byte that is being addessed
+}
+
 void CPU::BRK()
 {
+	cout<<"break"<<endl;
 	PC++;
-	status[BREAK] = 1;
+	push((PC >> 8) & 0xff);
+	push(PC & 0xff);
+	status[BREAK] = true;
+	//PUSH(SR)
+	status[INTERRUPT] = true;
+	// PC = (load(0xffe) | (load(0xffe) << 8))
 }
 
 void CPU::ORA_indirect_X()
@@ -492,6 +517,7 @@ void CPU::CMP_zero_page()
 void CPU::DEC_zero_page()
 {
 }
+
 
 void CPU::INY()
 {

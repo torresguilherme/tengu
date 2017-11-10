@@ -4,9 +4,9 @@
 int main(int argc, char **argv)
 {
 	FILE *rom = fopen(argv[1], "rb");
-	CPU cpu();
+	CPU cpu;
 	unsigned char current_instruction;
-	while(!feof(rom))
+	while(!cpu.status[cpu.INTERRUPT])
 	{
 		fread(&current_instruction, sizeof(char), 1, rom);
 //		printf("%02x\n", current_instruction);
