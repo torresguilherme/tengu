@@ -1,5 +1,5 @@
 [root]
-name = "rustengu"
+name = "tengu"
 version = "0.1.0"
 dependencies = [
  "sdl2 0.31.0 (registry+https://github.com/rust-lang/crates.io-index)",

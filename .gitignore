@@ -1,3 +1,4 @@
 /src/tengu
 *.swp
 *.o
+/target/*
